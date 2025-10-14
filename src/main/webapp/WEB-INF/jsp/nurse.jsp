@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Telemedical Expertise System</title>
+    <title>Nurse Dashboard</title>
 </head>
 <body>
-    <!-- TODO: Add main page content -->
+    <!-- TODO: Add nurse dashboard content -->
 </body>
 </html>
