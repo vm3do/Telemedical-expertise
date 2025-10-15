@@ -5,8 +5,8 @@ import com.example.telemedicalexpertise.model.User;
 public interface UserDAO {
     void save(User user);
     User findById(Long id);
-    User findByUsername(String username);
+    User findByEmail(String email);
     void update(User user);
     void delete(Long id);
-    boolean authenticate(String username, String password);
+    boolean authenticate(String email, String password);
 }
