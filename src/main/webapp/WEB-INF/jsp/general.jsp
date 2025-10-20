@@ -3,6 +3,7 @@
 <%@ page import="com.example.telemedicalexpertise.model.GeneralPractitioner" %>
 <%@ page import="com.example.telemedicalexpertise.model.Patient" %>
 <%@ page import="com.example.telemedicalexpertise.model.Consultation" %>
+<%@ page import="com.example.telemedicalexpertise.utils.CSRFUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%
@@ -12,6 +13,9 @@
         return;
     }
     GeneralPractitioner gp = (GeneralPractitioner) user;
+
+    // Generate CSRF token for this session
+    String csrfToken = CSRFUtil.getToken(session);
 
     // Get attributes
     List<Patient> waitingPatients = (List<Patient>) request.getAttribute("waitingPatients");
@@ -228,6 +232,7 @@
                         <form action="<%= request.getContextPath() %>/general" method="post" class="space-y-4">
                             <input type="hidden" name="action" value="createConsultation">
                             <input type="hidden" name="patientId" value="<%= patient != null ? patient.getId() : "" %>">
+                            <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
 
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Chief Complaint (Motif)</label>
@@ -294,6 +299,7 @@
                                 <form action="<%= request.getContextPath() %>/general" method="post" class="space-y-4 border-t pt-4">
                                     <input type="hidden" name="action" value="closeConsultation">
                                     <input type="hidden" name="consultationId" value="<%= consultation.getId() %>">
+                                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Diagnostic</label>
