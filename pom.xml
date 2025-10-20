@@ -24,6 +24,8 @@
             <version>6.1.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JSTL for JSP -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>

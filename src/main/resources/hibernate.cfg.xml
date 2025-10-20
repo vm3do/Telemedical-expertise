@@ -22,5 +22,6 @@
         <mapping class="com.example.telemedicalexpertise.model.GeneralPractitioner"/>
         <mapping class="com.example.telemedicalexpertise.model.Specialist"/>
         <mapping class="com.example.telemedicalexpertise.model.Patient"/>
+        <mapping class="com.example.telemedicalexpertise.model.Consultation"/>
     </session-factory>
 </hibernate-configuration>
