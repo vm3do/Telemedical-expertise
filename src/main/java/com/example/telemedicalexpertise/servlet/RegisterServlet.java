@@ -6,6 +6,7 @@ import com.example.telemedicalexpertise.model.GeneralPractitioner;
 import com.example.telemedicalexpertise.model.Nurse;
 import com.example.telemedicalexpertise.model.Specialist;
 import com.example.telemedicalexpertise.model.User;
+import com.example.telemedicalexpertise.model.enums.Specialty;
 import com.example.telemedicalexpertise.service.AuthService;
 import com.example.telemedicalexpertise.service.impl.AuthServiceImpl;
 import jakarta.servlet.ServletException;
@@ -25,19 +26,20 @@ public class RegisterServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String role = request.getParameter("role");
+        String specialtyParam = request.getParameter("specialty");
 
         try {
             User user = null;
@@ -49,7 +51,11 @@ public class RegisterServlet extends HttpServlet {
                     user = new GeneralPractitioner(email, password, email, firstName, lastName);
                     break;
                 case "SPECIALIST":
-                    user = new Specialist(email, password, email, firstName, lastName);
+                    Specialist specialist = new Specialist(email, password, email, firstName, lastName);
+                    if (specialtyParam != null && !specialtyParam.isEmpty()) {
+                        specialist.setSpecialty(Specialty.valueOf(specialtyParam));
+                    }
+                    user = specialist;
                     break;
             }
 
