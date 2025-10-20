@@ -34,6 +34,24 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NurseServlet</servlet-name>
+        <servlet-class>com.example.telemedicalexpertise.servlet.NurseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NurseServlet</servlet-name>
+        <url-pattern>/nurse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PatientServlet</servlet-name>
+        <servlet-class>com.example.telemedicalexpertise.servlet.PatientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PatientServlet</servlet-name>
+        <url-pattern>/patient</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
